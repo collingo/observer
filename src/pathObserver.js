@@ -6,14 +6,8 @@ function objectForEach(obj, cb) {
 function arrayForEach(arr, cb) {
   arr.forEach(cb);
 }
-function getFullPath(obj, path, key, isArray) {
-  var fullPath;
-  if(isArray || Array.isArray(obj)) {
-    fullPath = (path ? path+'[' : '')+key+(path ? ']' : '');
-  } else {
-    fullPath = (path ? path+'.' : '')+key;
-  }
-  return fullPath;
+function getFullPath(obj, path, key) {
+  return (path ? path+'.' : '')+key;
 }
 
 function onChange(obj, path, cb, changes) {
@@ -29,7 +23,7 @@ function onChange(obj, path, cb, changes) {
         cNew = obj[change.name];
       break;
       case 'splice':
-        cPath = getFullPath(obj, path, change.index, true);
+        cPath = getFullPath(obj, path, change.index);
         if(change.removed.length) {
           cType = 'remove';
           cOld = change.removed[0];
@@ -84,4 +78,7 @@ function iterator(obj, cb, path) {
 }
 function pathObserver(obj, cb) {
   iterator(obj, cb);
+}
+if(typeof module !== 'undefined' && module.exports) {
+  module.exports = pathObserver;
 }
