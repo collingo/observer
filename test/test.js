@@ -18,10 +18,10 @@ function ita(condition, expectation) {
 }
 
 //// SUT
-var pathObserver = require('../src/pathObserver');
+var observer = require('../src/observer');
 
 //// TESTS
-describe('pathObserver', function() {
+describe('observer', function() {
 
   var sandbox;
   var observed;
@@ -43,7 +43,7 @@ describe('pathObserver', function() {
         a:1,
         b:2
       };
-      pathObserver(observed, callback);
+      observer(observed, callback);
     });
 
     describe('when adding a property', function() {
@@ -85,7 +85,7 @@ describe('pathObserver', function() {
 
     beforeEach(function() {
       observed = [0,1,2];
-      pathObserver(observed, callback);
+      observer(observed, callback);
     });
 
     describe('when pushing a value', function() {
@@ -167,7 +167,7 @@ describe('pathObserver', function() {
           b:2
         }
       };
-      pathObserver(observed, callback);
+      observer(observed, callback);
     });
 
     describe('when adding a property', function() {
@@ -212,7 +212,7 @@ describe('pathObserver', function() {
     beforeEach(function() {
       observed = [0,[0,1,2],2];
       nestedArray = observed[1];
-      pathObserver(observed, callback);
+      observer(observed, callback);
     });
 
     describe('when pushing a value to the nested array', function() {
@@ -294,7 +294,7 @@ describe('pathObserver', function() {
         c:[0,1,2]
       };
       childArray = observed.c;
-      pathObserver(observed, callback);
+      observer(observed, callback);
     });
 
     describe('when pushing a value', function() {
@@ -373,7 +373,7 @@ describe('pathObserver', function() {
       }, {
         b:2
       }];
-      pathObserver(observed, callback);
+      observer(observed, callback);
     });
 
     describe('when adding a property to a child object', function() {
