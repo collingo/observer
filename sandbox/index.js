@@ -1,4 +1,5 @@
-var model = {
+var observer = require('../src/observer');
+window.model = {
   a:{
     b:1,
     d:[1,2,{
@@ -8,6 +9,6 @@ var model = {
   },
   c:2
 };
-pathObserver(model, function(path, action, newValue, oldValue) {
+observer(model, function(path, action, newValue, oldValue) {
   console.log(path, action, JSON.stringify(newValue), JSON.stringify(oldValue));
 });

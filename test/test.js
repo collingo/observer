@@ -53,7 +53,7 @@ describe('observer', function() {
       })
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('c', 'add', 3, undefined);
+        expect(callback).to.have.been.calledWith(['c'], 'add', 3, undefined);
       });
     });
 
@@ -64,7 +64,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the delete signature', function() {
-        expect(callback).to.have.been.calledWith('a', 'delete', undefined, 1);
+        expect(callback).to.have.been.calledWith(['a'], 'delete', undefined, 1);
       });
     });
 
@@ -75,7 +75,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the update signature', function() {
-        expect(callback).to.have.been.calledWith('a', 'update', 2, 1);
+        expect(callback).to.have.been.calledWith(['a'], 'update', 2, 1);
       });
     });
 
@@ -95,7 +95,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('3', 'add', 1, undefined);
+        expect(callback).to.have.been.calledWith([3], 'add', 1, undefined);
       });
     });
 
@@ -106,7 +106,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the remove signature', function() {
-        expect(callback).to.have.been.calledWith('2', 'remove', undefined, 2);
+        expect(callback).to.have.been.calledWith([2], 'remove', undefined, 2);
       });
     });
 
@@ -117,7 +117,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('0', 'add', 2, undefined);
+        expect(callback).to.have.been.calledWith([0], 'add', 2, undefined);
       });
     });
 
@@ -128,7 +128,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the remove signature', function() {
-        expect(callback).to.have.been.calledWith('0', 'remove', undefined, 0);
+        expect(callback).to.have.been.calledWith([0], 'remove', undefined, 0);
       });
     });
 
@@ -139,7 +139,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the update signature', function() {
-        expect(callback).to.have.been.calledWith('1', 'update', 9, 1);
+        expect(callback).to.have.been.calledWith(['1'], 'update', 9, 1);
       });
     });
 
@@ -150,7 +150,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('1', 'add', 9, undefined);
+        expect(callback).to.have.been.calledWith([1], 'add', 9, undefined);
       });
     });
 
@@ -177,7 +177,7 @@ describe('observer', function() {
       })
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('c.c', 'add', 3, undefined);
+        expect(callback).to.have.been.calledWith(['c','c'], 'add', 3, undefined);
       });
     });
 
@@ -188,7 +188,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the delete signature', function() {
-        expect(callback).to.have.been.calledWith('c.a', 'delete', undefined, 1);
+        expect(callback).to.have.been.calledWith(['c','a'], 'delete', undefined, 1);
       });
     });
 
@@ -199,7 +199,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the update signature', function() {
-        expect(callback).to.have.been.calledWith('c.a', 'update', 2, 1);
+        expect(callback).to.have.been.calledWith(['c','a'], 'update', 2, 1);
       });
     });
 
@@ -222,7 +222,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('1.3', 'add', 1, undefined);
+        expect(callback).to.have.been.calledWith([1,3], 'add', 1, undefined);
       });
     });
 
@@ -233,7 +233,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the remove signature', function() {
-        expect(callback).to.have.been.calledWith('1.2', 'remove', undefined, 2);
+        expect(callback).to.have.been.calledWith([1,2], 'remove', undefined, 2);
       });
     });
 
@@ -244,7 +244,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('1.0', 'add', 2, undefined);
+        expect(callback).to.have.been.calledWith([1,0], 'add', 2, undefined);
       });
     });
 
@@ -255,7 +255,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the remove signature', function() {
-        expect(callback).to.have.been.calledWith('1.0', 'remove', undefined, 0);
+        expect(callback).to.have.been.calledWith([1,0], 'remove', undefined, 0);
       });
     });
 
@@ -266,7 +266,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the update signature', function() {
-        expect(callback).to.have.been.calledWith('1.1', 'update', 9, 1);
+        expect(callback).to.have.been.calledWith([1,'1'], 'update', 9, 1);
       });
     });
 
@@ -277,7 +277,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('1.1', 'add', 9, undefined);
+        expect(callback).to.have.been.calledWith([1,1], 'add', 9, undefined);
       });
     });
 
@@ -304,7 +304,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('c.3', 'add', 1, undefined);
+        expect(callback).to.have.been.calledWith(['c',3], 'add', 1, undefined);
       });
     });
 
@@ -315,7 +315,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the remove signature', function() {
-        expect(callback).to.have.been.calledWith('c.2', 'remove', undefined, 2);
+        expect(callback).to.have.been.calledWith(['c',2], 'remove', undefined, 2);
       });
     });
 
@@ -326,7 +326,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('c.0', 'add', 2, undefined);
+        expect(callback).to.have.been.calledWith(['c',0], 'add', 2, undefined);
       });
     });
 
@@ -337,7 +337,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the remove signature', function() {
-        expect(callback).to.have.been.calledWith('c.0', 'remove', undefined, 0);
+        expect(callback).to.have.been.calledWith(['c',0], 'remove', undefined, 0);
       });
     });
 
@@ -348,7 +348,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the update signature', function() {
-        expect(callback).to.have.been.calledWith('c.1', 'update', 9, 1);
+        expect(callback).to.have.been.calledWith(['c','1'], 'update', 9, 1);
       });
     });
 
@@ -359,7 +359,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('c.1', 'add', 9, undefined);
+        expect(callback).to.have.been.calledWith(['c',1], 'add', 9, undefined);
       });
     });
 
@@ -383,7 +383,7 @@ describe('observer', function() {
       })
 
       ita('should call the callback with the add signature', function() {
-        expect(callback).to.have.been.calledWith('0.c', 'add', 3, undefined);
+        expect(callback).to.have.been.calledWith([0,'c'], 'add', 3, undefined);
       });
     });
 
@@ -394,7 +394,7 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the delete signature', function() {
-        expect(callback).to.have.been.calledWith('0.a', 'delete', undefined, 1);
+        expect(callback).to.have.been.calledWith([0,'a'], 'delete', undefined, 1);
       });
     });
 
@@ -405,8 +405,43 @@ describe('observer', function() {
       });
 
       ita('should call the callback with the update signature', function() {
-        expect(callback).to.have.been.calledWith('0.a', 'update', 2, 1);
+        expect(callback).to.have.been.calledWith([0,'a'], 'update', 2, 1);
       });
+    });
+
+  });
+  
+  describe('when a change contains an object', function() {
+
+    beforeEach(function() {
+      observed = {
+        a:1
+      };
+      observer(observed, callback);
+    });
+
+    describe('when adding a property to a child object', function() {
+
+      beforeEach(function() {
+        observed.a = {
+          b: 1
+        };
+      })
+
+      ita('should call the callback with the update signature', function() {
+        expect(callback).to.have.been.calledWith(['a'], 'update', {b:1}, 1);
+      });
+      
+      it('should bind listeners to the newly added object', function(done) {
+        setTimeout(function() {
+          observed.a.b = 2;
+          setTimeout(function() {
+            expect(callback).to.have.been.calledWith(['a', 'b'], 'update', 2, 1);
+            done();
+          }, 1);
+        }, 1);
+      });
+
     });
 
   });

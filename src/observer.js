@@ -1,20 +1,15 @@
-function objectForEach(obj, cb) {
-  Object.keys(obj).forEach(function(key) {
-    cb(obj[key], key, obj);
-  });
-}
-function arrayForEach(arr, cb) {
-  arr.forEach(cb);
-}
-function getFullPath(obj, path, key) {
-  return (path ? path+'.' : '')+key;
+var walker = require('walker');
+var WalkerObject = require('../../walker-object/src/walker-object');
+
+function getFullPath(path, key) {
+  return path.concat(key);
 }
 
 function onChange(obj, path, cb, changes) {
   var change, cPath, cType, cOld, cNew;
   while(changes.length) {
     change = changes.shift();
-    cPath = getFullPath(obj, path, change.name);
+    cPath = getFullPath(path, change.name);
     cType = change.type;
     cOld = change.oldValue;
     switch(change.type) {
@@ -23,7 +18,7 @@ function onChange(obj, path, cb, changes) {
         cNew = obj[change.name];
       break;
       case 'splice':
-        cPath = getFullPath(obj, path, change.index);
+        cPath = getFullPath(path, change.index);
         if(change.removed.length) {
           cType = 'remove';
           cOld = change.removed[0];
@@ -56,29 +51,23 @@ function onChange(obj, path, cb, changes) {
       break;
     }
     if(typeof cNew === "object") {
-      iterator(cNew, cb, cPath);
+      pathObserver(cNew, cb, [].concat(cPath));
     }
     cb(cPath, cType, cNew, cOld);
   }
 }
 
-function iterator(obj, cb, path) {
-  var type = Object;
-  var forEach = objectForEach;
-  if(Array.isArray(obj)) {
-    type = Array;
-    forEach = arrayForEach;
-  }
-  forEach(obj, function(val, key) {
-    if(typeof val === "object") {
-      iterator(val, cb, getFullPath(obj, path, key));
+function pathObserver(obj, cb, path) {
+  walker(new WalkerObject(path), obj, function(node, path) {
+    if(typeof node === "object") {
+      var type = Object;
+      if(Array.isArray(node)) {
+        type = Array;
+      }
+      type.observe(node, onChange.bind(this, node, [].concat(path), cb));
     }
   });
-  type.observe(obj, onChange.bind(this, obj, path, cb));
 }
-function pathObserver(obj, cb) {
-  iterator(obj, cb);
-}
-if(typeof module !== 'undefined' && module.exports) {
+if(module && module.exports) {
   module.exports = pathObserver;
 }

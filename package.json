@@ -6,8 +6,12 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "walker": "git+https://git@github.com/collingo/walker",
+    "walker-object": "git+https://git@github.com/collingo/walker-object"
+  },
   "devDependencies": {
+    "browserify": "^6.2.0",
     "chai": "^1.9.2",
     "grunt": "^0.4.5",
     "grunt-contrib-watch": "^0.6.1",
@@ -17,7 +21,8 @@
     "sinon-chai": "^2.6.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "mocha",
+    "start": "browserify sandbox/index.js -o sandbox/build.js -d"
   },
   "repository": {
     "type": "git",
