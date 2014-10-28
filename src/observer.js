@@ -1,5 +1,5 @@
 var walker = require('walker');
-var WalkerObject = require('../../walker-object/src/walker-object');
+var WalkerObject = require('walker-object');
 
 function getFullPath(path, key) {
   return path.concat(key);
